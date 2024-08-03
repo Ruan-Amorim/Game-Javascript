@@ -38,8 +38,14 @@ html, body {
     position: absolute;
     width: 10vw;
     height: 10vw;
+    padding: 10px;
     border: 3px solid whitesmoke;
-    box-shadow: 0 0 20px rgba(187, 70, 216, 0.767);
+    box-shadow: 0 0 20px rgba(144, 28, 173, 0.767);
     border-radius: 50%;
     animation: animacao01 0.3s ease-in-out;
+}
+i {
+    color: whitesmoke;
+    font-size: 7dvh;
+    margin: 2%;
 }
