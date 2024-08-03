@@ -1,4 +1,5 @@
 
+/* ANIMAÇÕES */
 @keyframes animacao01 {
     from {
         opacity: 0;
@@ -10,6 +11,7 @@
     }
 }
 
+/* CONFIGURAÇÕES GERAIS */
 * {
     margin: 0;
     padding: 0;
@@ -25,6 +27,36 @@ html, body {
     transition: 0.3s;
     overflow: hidden;
 }
+/* MENU DO JOGO */
+#menu {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
+    z-index: 1000;
+}
+#menu > h1 {
+    position: absolute;
+    display: block;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-size: 7dvh;
+    color: whitesmoke;
+    z-index: 1001;
+    animation: animacao01 2s ease-in-out;
+    transition: 0.8s;
+}
+#menu > h1:hover {
+    transition: 0.8s;
+    text-shadow: 0 0 20px rgba(144, 28, 173, 0.767);
+}
+/* CONTAINER MAPA E CIRCLE */
 #containerMapa{
     position: relative;
     width: 100%;
@@ -39,8 +71,8 @@ html, body {
     width: 10vw;
     height: 10vw;
     padding: 10px;
-    border: 3px solid whitesmoke;
-    box-shadow: 0 0 20px rgba(144, 28, 173, 0.767);
+    border: 0.5vw solid whitesmoke;
+    box-shadow: 0 0 20px rgba(144, 28, 173, 0.767) ,inset 0 0 20px rgba(144, 28, 173, 0.767);
     border-radius: 50%;
     animation: animacao01 0.3s ease-in-out;
 }

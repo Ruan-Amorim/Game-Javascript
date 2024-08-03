@@ -26,4 +26,8 @@ function interacao(idItem) {
     createCircle();
 }
 
-createCircle();
+document.getElementById("start").addEventListener('click', () => {
+    let item = window.document.getElementById("menu");
+    item.style.display = "none";
+    createCircle();
+})
