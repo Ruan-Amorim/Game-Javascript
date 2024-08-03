@@ -1,15 +1,16 @@
 
 const Backgrounds = [
+    "https://images.unsplash.com/photo-1556379092-dca659792591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D",
     "https://cdna.artstation.com/p/assets/images/images/043/211/772/original/nauris-amatnieks-chroniclesanimation1080p.gif?1636620973",
     "https://i.pinimg.com/originals/ef/22/58/ef225816f24fc1eef530dbd5c5a14f43.gif",
+    "https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg",
     "https://wallpapercave.com/wp/wp2527110.jpg",
-    "https://a-static.besthdwallpaper.com/naruto-cat-hacker-wallpaper-2880x1080-86510_89.jpg",
     "https://cdn.wallpapersafari.com/55/83/Pl6QHc.jpg",
-    
-    "https://wallpapers-clan.com/wp-content/uploads/2024/02/smiling-naruto-uzumaki-anime-desktop-wallpaper-cover.jpg",
-    "https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112835.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/642/695/642/anime-demon-slayer-kimetsu-no-yaiba-giyuu-tomioka-hd-wallpaper-preview.jpg",
+    "https://cdn.hero.page/wallpapers/28d841fd-fa7f-44e9-b804-57ea19944052-marvel-universe-the-incredible-hulk-wallpaper-1.png",
+    "https://images3.alphacoders.com/132/1322308.jpeg",
     "https://img4.thuthuatphanmem.vn/uploads/2020/06/22/hinh-nen-full-hd-anime_092519720.jpg",
+    "https://i.redd.it/g4crddfnmt9a1.jpg",
+    "https://asset.gecdesigns.com/img/wallpapers/beautiful-fantasy-wallpaper-ultra-hd-wallpaper-4k-sr10012418-1706506236698-cover.webp",
 ]
 
 // interatividade com o menu
