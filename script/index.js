@@ -12,6 +12,9 @@ const Backgrounds = [
     "https://i.redd.it/g4crddfnmt9a1.jpg",
     "https://asset.gecdesigns.com/img/wallpapers/beautiful-fantasy-wallpaper-ultra-hd-wallpaper-4k-sr10012418-1706506236698-cover.webp",
 ]
+const BackgroundsCl = [
+    "https://images3.alphacoders.com/132/1322308.jpeg",
+]
 
 // interatividade com o menu
 function menuBurgue() {
