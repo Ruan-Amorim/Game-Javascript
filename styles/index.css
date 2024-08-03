@@ -80,4 +80,17 @@ i {
     color: whitesmoke;
     font-size: 7dvh;
     margin: 2%;
+    transition: 0.2s;
+}
+nav > i:hover {
+    color: rgba(144, 28, 173, 0.767);
+    transition: 0.2s;
+}
+#score {
+    position: absolute;
+    top: 0;
+    left: 7dvh;
+    color: whitesmoke;
+    font-size: 6dvh;
+    margin: 2%;
 }
