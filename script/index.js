@@ -1,5 +1,9 @@
 
 const Backgrounds = [
+    "midias/imagePC/girl_demon_horns_1078594_1920x1080.jpg",
+    "midias/imagePC/girl_hands_eyes_1078067_1920x1080.jpg",
+    "midias/imagePC/girl_warrior_armor_1060104_1920x1080.jpg",
+    "midias/imagePC/1af689d42bdb7686df444f22925f9e89.gif",
     "https://images.unsplash.com/photo-1556379092-dca659792591?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D",
     "https://cdna.artstation.com/p/assets/images/images/043/211/772/original/nauris-amatnieks-chroniclesanimation1080p.gif?1636620973",
     "https://i.pinimg.com/originals/ef/22/58/ef225816f24fc1eef530dbd5c5a14f43.gif",
@@ -13,6 +17,25 @@ const Backgrounds = [
     "https://asset.gecdesigns.com/img/wallpapers/beautiful-fantasy-wallpaper-ultra-hd-wallpaper-4k-sr10012418-1706506236698-cover.webp",
 ]
 const BackgroundsCl = [
+    "midias/imageCL/gato_mais_garota.jpg",
+    "midias/imageCL/Tanjiro01.jpg",
+    "midias/imageCL/image_planeta.jpg",
+    "midias/imageCL/japan_chuva.jpg",
+    "midias/imageCL/konosuba01.jpg",
+    "midias/imageCL/zenitsu02.jpg",
+    "midias/imageCL/Konosuba02.jpg",
+    "midias/imageCL/Tanjiro02.jpg",
+    "midias/imageCL/konosuba03.jpg",
+    "midias/imageCL/lua.jpg",
+    "midias/imageCL/Obanai.jpg",
+    "midias/imageCL/oceano_more_space.jpg",
+    "midias/imageCL/rua_japan.jpg",
+    "midias/imageCL/stylish_japan.jpg",
+    "midias/imageCL/Tomyoka.jpg",
+    "midias/imageCL/tuantuan.jpg",
+    "midias/imageCL/village_space.jpg",
+    "midias/imageCL/Yudi.jpg",
+    "midias/imageCL/zenitsu.jpg",
     "https://images3.alphacoders.com/132/1322308.jpeg",
 ]
 
@@ -112,9 +135,19 @@ function menuBackground() {
         
         for (let x = 0; x < Backgrounds.length; x++) {
             let image = document.createElement("img");
-            image.src = Backgrounds[x]
+            if (window.innerWidth <= 500) {
+                image.src = BackgroundsCl[x];
+            } else {
+                image.src = Backgrounds[x];
+            } 
             image.className = "imageBackground"
-            image.addEventListener('click', () => { containerMapa.style.backgroundImage = `url("${Backgrounds[x]}")`})
+            image.addEventListener('click', () => {
+                if (window.innerWidth <= 500) {
+                    containerMapa.style.backgroundImage = `url("${BackgroundsCl[x]}")`
+                } else {
+                    containerMapa.style.backgroundImage = `url("${Backgrounds[x]}")`
+                } 
+            });
             
             Background.appendChild(image);
         }
