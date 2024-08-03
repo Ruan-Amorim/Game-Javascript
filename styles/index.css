@@ -27,8 +27,8 @@ html, body {
     transition: 0.3s;
     overflow: hidden;
 }
-/* MENU DO JOGO */
-#menu {
+/* telaInicial DO JOGO */
+#telaInicial {
     position: absolute;
     display: block;
     width: 100vw;
@@ -38,7 +38,7 @@ html, body {
     background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
     z-index: 1000;
 }
-#menu > h1 {
+#telaInicial > h1 {
     position: absolute;
     display: block;
     padding: 10px;
@@ -52,7 +52,7 @@ html, body {
     animation: animacao01 2s ease-in-out;
     transition: 0.8s;
 }
-#menu > h1:hover {
+#telaInicial > h1:hover {
     transition: 0.8s;
     text-shadow: 0 0 20px rgba(144, 28, 173, 0.767);
 }

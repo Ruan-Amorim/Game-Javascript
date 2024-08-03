@@ -27,7 +27,7 @@ function interacao(idItem) {
 }
 
 document.getElementById("start").addEventListener('click', () => {
-    let item = window.document.getElementById("menu");
+    let item = window.document.getElementById("telaInicial");
     item.style.display = "none";
     createCircle();
 })
