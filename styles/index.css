@@ -76,7 +76,8 @@ html, body {
     box-shadow: 0 0 15px rgba(190, 56, 235, 0.589);
     border-radius: 30px;
     z-index: 2000;
-    transition: 0.8s;
+    animation: animacao01 0.7s ease-in-out;
+    transition: 0.7s;
 }
 #menu > ul {
     position: absolute;
@@ -86,7 +87,7 @@ html, body {
     transform: translate(-50%,-50%);
 }
 #menu > ul > li {
-    margin: 10px;
+    margin: 10% 0;
     padding: 10px;
     text-align: center;
     text-decoration: none;
@@ -96,12 +97,13 @@ html, body {
     border: 0.5vw solid whitesmoke;
     border-radius: 10px;
 }
-#menu > ul > li:hover {
+#menu > ul > li:hover, #menu_GamePlay > ul > li:hover, #containerInsano > ul > li:hover {
     transition: 0.3s;
     color: rgba(144, 28, 173, 0.767);
     border: 0.5vw solid rgba(144, 28, 173, 0.767);
     text-shadow: 0 0 20px rgba(144, 28, 173, 0.767);
 }
+/* MENU BACKGROUND*/
 #menu_background {
     position: absolute;
     display: none;
@@ -115,19 +117,29 @@ html, body {
     box-shadow: 0 0 10px rgba(190, 56, 235, 0.589);
     border-radius: 30px;
     z-index: 3000;
-    transition: 0.8s;
+    animation: animacao01 0.7s ease-in-out;
+    transition: 0.7s;
     overflow-y: scroll;
 }
 .imageBackground {
     display: inline-block;
     width: 40%;
     height: auto;
-    max-width: 400px;
-    max-height: 500px;
     text-align: center;
     margin: 2%;
     border-radius: 10px;
 }
+#sairBackground {
+    position: sticky;
+    padding: 5px 0;
+    bottom: 0;
+    color: whitesmoke; 
+    border-radius: 10px;
+    background: linear-gradient(60deg, rgb(76, 6, 122), rgb(8, 8, 122));
+    font-size: 5dvh;
+    z-index: 4000;
+}
+
 /* CONTAINER MAPA E CIRCLE */
 #containerMapa{
     position: relative;
@@ -152,9 +164,14 @@ html, body {
     animation: animacao01 0.3s ease-in-out;
 }
 i {
-    color: whitesmoke;
-    font-size: 7dvh;
     margin: 2%;
+    font-size: 7dvh;
+    color: whitesmoke;
+    text-shadow: 
+        1px 1px 0 black, /* Sombra superior esquerda */
+        -1px -1px 0 black, /* Sombra inferior direita */
+        1px -1px 0 black, /* Sombra superior direita */
+        -1px 1px 0 black; /* Sombra inferior esquerda */
     transition: 0.2s;
 }
 nav > i:hover {
@@ -163,15 +180,59 @@ nav > i:hover {
 }
 #score {
     position: absolute;
+    margin: 1.6% 2% ;
     top: 0;
     left: 7dvh;
+    font-size: 7dvh;
     color: whitesmoke;
-    font-size: 6dvh;
-    margin: 2%;
+    text-shadow: 
+        1px 1px 0 black, /* Sombra superior esquerda */
+        -1px -1px 0 black, /* Sombra inferior direita */
+        1px -1px 0 black, /* Sombra superior direita */
+        -1px 1px 0 black; /* Sombra inferior esquerda */
     transition: 1s;
 }
-#sairBackground {
-    position: sticky;
+/* MENU GAMELAY */
+
+#menu_GamePlay, #containerInsano{
+    position: absolute;
+    display: none;
+    width: 85vw;
+    height: 85dvh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
+    box-shadow: 0 0 10px rgba(190, 56, 235, 0.589);
+    border-radius: 30px;
+    z-index: 3000;
+    animation: animacao01 0.7s ease-in-out;
+    transition: 0.7s;
+    overflow-y: scroll;
+}
+
+#menu_GamePlay > ul, #containerInsano > ul{
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#menu_GamePlay > ul > li, #containerInsano > ul > li  {
+    margin: 10% 0;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    color: whitesmoke;
+    font-size: 3dvh;
+    border: 0.5vw solid whitesmoke;
+    border-radius: 10px;
+}
+#sairGameplay, #sairGameplayInsano{
+    position: absolute;
+    width: 100%;
     padding: 5px 0;
     bottom: 0;
     color: whitesmoke; 
@@ -179,4 +240,69 @@ nav > i:hover {
     background: linear-gradient(60deg, rgb(76, 6, 122), rgb(8, 8, 122));
     font-size: 5dvh;
     z-index: 4000;
+}
+
+#caica_de_texto_Gameplay {
+    position: absolute;
+    display: none;
+    width: 85vw;
+    height: 85dvh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
+    box-shadow: 0 0 10px rgba(190, 56, 235, 0.589);
+    border-radius: 30px;
+    z-index: 3000;
+    animation: animacao01 0.7s ease-in-out;
+    transition: 0.7s;
+    z-index: 100000;
+}
+#caica_de_texto_Gameplay > h2 {
+    font-size: 4.5dvh;
+    margin: 7% 10% 5% 10%;
+    color: whitesmoke;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
+}
+#caica_de_texto_Gameplay > h3 {
+    font-size: 3.7dvh;
+    color: whitesmoke;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
+}
+#caica_de_texto_Gameplay > p {
+    margin: 5% 10% 5% 10%;
+    font-size: 3dvh;
+    color: whitesmoke;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
+}
+#caica_de_texto_Gameplay > span {
+    display: inline-block;
+    margin: 5% 10% 10% 10%;
+    padding: 10px;
+    bottom: 10%;
+    font-size: 3dvh;
+    color: whitesmoke;
+    background: rgba(191, 0, 255, 0.589);
+    border-radius: 25%;
+    box-shadow: 0 0 10px rgba(190, 56, 235, 0.589);
+}
+.imageBackgroundInit {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    height: 30%;
+    margin: 2%;
+    text-align: center;
+    color: whitesmoke;
+    background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
+    border-radius: 10px;
+    border: 1dvh solid  rgba(190, 56, 235, 0.589);
+}
+.imageBackgroundInit > h2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 3.1dvh;
 }

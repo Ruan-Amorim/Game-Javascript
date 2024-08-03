@@ -38,6 +38,23 @@ const BackgroundsCl = [
     "midias/imageCL/zenitsu.jpg",
     "https://images3.alphacoders.com/132/1322308.jpeg",
 ]
+const textGamaplayInsano = [{
+    "Fácil": {
+        "h2": "Modo de GamePlay:<br> Insana",
+        "h3": "Dificuldade: Fácil",
+        "p": "No modo Fácil de GamePlay insana, os circulos aparecerem na tela a cada 01 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+    },
+    "Médio": {
+        "h2": "Modo de GamePlay:<br> Insana",
+        "h3": "Dificuldade: Medio",
+        "p": "No modo Medio de GamePlay insana, os circulos aparecerem na tela a cada 0.8 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+    },
+    "Difícil": {
+        "h2": "Modo de GamePlay:<br> Insana",
+        "h3": "Dificuldade: Difícil",
+        "p": "No modo Difícil de GamePlay insana, os circulos aparecerem na tela a cada 0.5 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+    }
+}];
 
 // interatividade com o menu
 function menuBurgue() {
@@ -51,6 +68,7 @@ function menuBurgue() {
 // PEGANDO OBJETOS HTML
 var containerMapa = window.document.getElementById("containerMapa");
 var scoreText = window.document.getElementById("score");
+var caica_de_texto_Gameplay = window.document.getElementById("caica_de_texto_Gameplay");
 
 var NumberClicks = 0;
 // CRIANDO OS CIRCULOS  RANDOMICAMENTE
@@ -100,11 +118,12 @@ function addMenu() {
     let ul = document.createElement("ul");
     let optionBackground = document.createElement("li");
     optionBackground.innerText = "Background";
-    optionBackground.addEventListener('click', () => { menuBackground(); });
+    optionBackground.addEventListener('click', () => { createMenuBackground(); });
     let optionStilishCircle = document.createElement("li");
     optionStilishCircle.innerText = "Estilizar";
     let optionTypetheGame = document.createElement("li");
-    optionTypetheGame.innerText = "Gamaplay";
+    optionTypetheGame.innerText = "Modos de Jogo";
+    optionTypetheGame.addEventListener('click', () => { createMenuGameplay();});
     let optionMusic = document.createElement("li");
     optionMusic.innerText = "Músicas"
 
@@ -120,10 +139,16 @@ function addMenu() {
     containerMapa.appendChild(menu);
     
     let Background = window.document.getElementById("menu_background");
+    let containerGameplay = window.document.getElementById("menu_GamePlay");
+    
+    let containerInsano = window.document.getElementById("containerInsano");
     Background.style.display = "none";
+    containerGameplay.style.display = "none";
+    containerInsano.style.display = "none";
+    caica_de_texto_Gameplay.style.display = "none";
 }
-
-function menuBackground() {
+// ADICIONANDO MENU-BACKGROUND
+function createMenuBackground() {
     let Background = window.document.getElementById("menu_background");
     if (Background.style.display == "none") {
         menu.style.display = "none";
@@ -131,8 +156,13 @@ function menuBackground() {
         let sair = document.createElement("p");
         sair.innerText = "sair";
         sair.id = "sairBackground";
-        sair.addEventListener('click', () => { menuBackground(); });
+        sair.addEventListener('click', () => { createMenuBackground(); });
         
+        let img = document.createElement("div");
+        img.className = "imageBackgroundInit";
+        img.innerHTML = "<h2>Padrão</h2>"
+        img.addEventListener('click', () => { containerMapa.style.backgroundImage = ''; containerMapa.style.background = "linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10))"; });
+        Background.appendChild(img);
         for (let x = 0; x < Backgrounds.length; x++) {
             let image = document.createElement("img");
             if (window.innerWidth <= 500) {
@@ -144,14 +174,19 @@ function menuBackground() {
             image.addEventListener('click', () => {
                 if (window.innerWidth <= 500) {
                     containerMapa.style.backgroundImage = `url("${BackgroundsCl[x]}")`
+                    containerMapa.style.backgroundPosition = "center";
+                    containerMapa.style.backgroundSize = "cover";
+                    containerMapa.style.backgroundRepeat = "no-repeat";
                 } else {
                     containerMapa.style.backgroundImage = `url("${Backgrounds[x]}")`
+                    containerMapa.style.backgroundPosition = "center";
+                    containerMapa.style.backgroundSize = "cover";
+                    containerMapa.style.backgroundRepeat = "no-repeat";
                 } 
             });
             
             Background.appendChild(image);
         }
-
         Background.appendChild(sair);
         Background.style.display = "block";
     } else {
@@ -159,4 +194,172 @@ function menuBackground() {
         Background.style.display = "none";
     }
 }
+// ADICIONANDO MENU-GAMEPLAY
+var intervalInsano;
+
+function createMenuGameplay() {
+    let containerGameplay = window.document.getElementById("menu_GamePlay");
+    if (containerGameplay.style.display == "none") {
+
+        menu.style.display = "none";
+        containerGameplay.style.display = "block";
+
+        const typesGameplay = ["Padrão", "Com Tempo", "Insano"]
+
+        let sair = document.createElement("p");
+        sair.innerText = "sair";
+        sair.id = "sairGameplay";
+        sair.addEventListener('click', () => { createMenuGameplay(); });
+        
+        let lista = document.createElement("ul");
+        
+        containerGameplay.appendChild(sair);
+        for (let x = 0; x < typesGameplay.length; x++) {
+            let item = document.createElement("li");
+            item.innerText = `${typesGameplay[x]}`;
+
+            if (typesGameplay[x] == "Insano") {
+                item.addEventListener('click', () => { typeGameplayInsano(); });
+            }
+            if (typesGameplay[x] == "Padrão") {
+                item.addEventListener('click', () => { 
+                    containerGameplay.style.display = "none";
+                    containerGameplay.innerHTML = '';
+                    setTimeout(() => {
+                        let circle = containerMapa.getElementsByTagName("div")[1];
+                        circle.remove();
+                        clearInterval(intervalInsano); 
+                        createCircle();
+                    }, 10);
+                });
+            }
+
+            lista.appendChild(item);
+            containerGameplay.appendChild(lista);
+        }
+    } else {
+        containerGameplay.style.display = "none";
+        containerGameplay.innerHTML = '';
+    }
+}
+
+function typeGameplayInsano() {
+    let containerInsano = window.document.getElementById("containerInsano");
+    if (containerInsano.style.display == "none") {
+        
+        let containerGameplay = window.document.getElementById("menu_GamePlay");
+        containerGameplay.style.display = "none";
+        containerGameplay.innerHTML = '';
+
+        containerInsano.style.display ="block";
+
+        let sair = document.createElement("p");
+        sair.innerText = "sair";
+        sair.id = "sairGameplayInsano";
+        sair.addEventListener('click', () => { typeGameplayInsano(); });
+        
+        const typesGameplayInsano = ["Fácil", "Médio", "Difícil"]
+
+        let lista = document.createElement("ul");
+        
+        containerInsano.appendChild(sair);
+        for (let x = 0; x < typesGameplayInsano.length; x++) {
+            let item = document.createElement("li");
+            item.innerText = `${typesGameplayInsano[x]}`;
+
+            if (typesGameplayInsano[x] == "Fácil") {
+                item.addEventListener('click', () => { boxTextGamaplay("Fácil"); });
+            } else if (typesGameplayInsano[x] == "Médio") {
+                item.addEventListener('click', () => { boxTextGamaplay("Médio"); });
+            } else if (typesGameplayInsano[x] == "Difícil") {
+                item.addEventListener('click', () => { boxTextGamaplay("Difícil"); });
+            }
+
+            lista.appendChild(item);
+        }
+        containerInsano.appendChild(lista);
+        containerMapa.appendChild(containerInsano);
+    } else {
+        containerInsano.style.display = "none";
+        containerInsano.innerHTML = '';
+    }
+}
+
+function startGameplayInsano(tempo) {
+    let circle = containerMapa.getElementsByTagName("div")[1];
+    circle.remove();
+    clearInterval(intervalInsano);
+    intervalInsano = setInterval(() => {
+
+        let randomTop = Math.floor(Math.random() * 80 + 10);
+        let randomLeft = Math.floor(Math.random() * 80 + 10);
+        
+        let circle = document.createElement("div");
+        circle.className = "cirlce";
+        circle.id = `circle${randomTop}-${randomLeft}`;
+    
+        circle.style.top = `${randomTop}%`;
+        circle.style.left = `${randomLeft}%`;
+    
+        circle.addEventListener('click', () => { 
+            
+            let item = window.document.getElementById(`circle${randomTop}-${randomLeft}`);
+            item.remove();
+            score("add");
+        });
+    
+        containerMapa.appendChild(circle);
+    }, tempo);
+}
+
+// FUNÇÃO PARA APARECER E DESAPARECER A CAIXA DE TEXTO
+
+function boxTextGamaplay(params) {
+
+    caica_de_texto_Gameplay.innerHTML = '';
+    caica_de_texto_Gameplay.style.display = "block";
+
+    let h2 = document.createElement("h2");
+    h2.innerHTML = textGamaplayInsano[0][params].h2
+
+    let h3 = document.createElement("h3");
+    h3.innerHTML = textGamaplayInsano[0][params].h3
+    
+    let p = document.createElement("p");
+    p.innerHTML = textGamaplayInsano[0][params].p
+
+    let back = document.createElement("span");
+    let enter = document.createElement("span");
+    
+    back.addEventListener('click', () => {
+        caica_de_texto_Gameplay.style.display = "none";
+    });
+
+    enter.addEventListener("click", () => {
+
+        if (params == "Fácil") {
+            typeGameplayInsano(); startGameplayInsano(1000);
+            caica_de_texto_Gameplay.style.display = "none";
+            
+        } else if (params == "Médio") {
+            typeGameplayInsano(); startGameplayInsano(800);
+            caica_de_texto_Gameplay.style.display = "none";
+
+        } else if (params == "Difícil") {
+            typeGameplayInsano(); startGameplayInsano(500);
+            caica_de_texto_Gameplay.style.display = "none";
+
+        }
+    });
+
+    back.innerText = "Voltar";
+    enter.innerText = "Começar";
+
+    caica_de_texto_Gameplay.appendChild(h2);
+    caica_de_texto_Gameplay.appendChild(h3);
+    caica_de_texto_Gameplay.appendChild(p);
+    caica_de_texto_Gameplay.appendChild(back);
+    caica_de_texto_Gameplay.appendChild(enter);
+}
+
 addMenu();
