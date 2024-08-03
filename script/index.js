@@ -1,5 +1,6 @@
 
 var containerMapa = window.document.getElementById("containerMapa");
+var scoreText = window.document.getElementById("score");
 
 var NumberClicks = 0;
 
@@ -15,17 +16,29 @@ function createCircle() {
     circle.style.top = `${randomTop}%`;
     circle.style.left = `${randomLeft}%`;
 
-    circle.addEventListener('click', () => { interacao(`circle${randomTop}-${randomLeft}`); });
+    circle.addEventListener('click', () => { clickCircle(`circle${randomTop}-${randomLeft}`); });
 
     containerMapa.appendChild(circle);
 };
 
-function interacao(idItem) {
+function clickCircle(idItem) {
     let item = window.document.getElementById(idItem);
     item.remove();
+    score("add");
     createCircle();
 }
 
+function score(addOrRemove) {
+    if (addOrRemove = "add") {
+        NumberClicks++
+        scoreText.innerText = `Score: ${NumberClicks}`;
+    } else {
+        NumberClicks = 0;
+        scoreText.innerText = `Score: ${NumberClicks}`;
+    }
+}
+
+// VERIFICAÇÃO DE CLICK NA TALA INICAL
 document.getElementById("start").addEventListener('click', () => {
     let item = window.document.getElementById("telaInicial");
     item.style.display = "none";

@@ -93,4 +93,5 @@ nav > i:hover {
     color: whitesmoke;
     font-size: 6dvh;
     margin: 2%;
+    transition: 1s;
 }
