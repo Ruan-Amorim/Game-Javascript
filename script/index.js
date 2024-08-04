@@ -1,6 +1,7 @@
 
 const Backgrounds = [
     "midias/imagePC/girl_demon_horns_1078594_1920x1080.jpg",
+    "https://images7.alphacoders.com/135/1351303.png",
     "midias/imagePC/girl_hands_eyes_1078067_1920x1080.jpg",
     "midias/imagePC/girl_warrior_armor_1060104_1920x1080.jpg",
     "midias/imagePC/1af689d42bdb7686df444f22925f9e89.gif",
@@ -66,11 +67,15 @@ function menuBurgue() {
     }
 }
 // PEGANDO OBJETOS HTML
+var audio = new Audio('midias/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a');
+
 var containerMapa = window.document.getElementById("containerMapa");
 var scoreText = window.document.getElementById("score");
 var caica_de_texto_Gameplay = window.document.getElementById("caica_de_texto_Gameplay");
 
 var NumberClicks = 0;
+
+
 // CRIANDO OS CIRCULOS  RANDOMICAMENTE
 function createCircle() {
 
@@ -110,6 +115,8 @@ document.getElementById("start").addEventListener('click', () => {
     let item = window.document.getElementById("telaInicial");
     item.style.display = "none";
     createCircle();
+    audio.loop = true;
+    audio.play();
 })
 
 // ADICIONANDO MENU 
@@ -361,5 +368,4 @@ function boxTextGamaplay(params) {
     caica_de_texto_Gameplay.appendChild(back);
     caica_de_texto_Gameplay.appendChild(enter);
 }
-
 addMenu();
