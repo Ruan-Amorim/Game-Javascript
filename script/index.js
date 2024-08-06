@@ -405,18 +405,18 @@ function startGameplayInsano(tempo, acumulo, ganhar) {
 
     intervalInsano = setInterval(() => {
         
-        if (acumulo == containerMapa.getElementsByTagName("div").length) {
+        if (ganhar == preNumberClicks) {
+
+            clearInterval(intervalInsano);
+            alert(`Você Ganhou ${preNumberClicks} Pontos.`);
+            clearCircles();
+            createCircle();
+        } else if (acumulo == containerMapa.getElementsByTagName("div").length) {
 
             clearInterval(intervalInsano);
             alert(`Você Perdeu. Acumulou ${containerMapa.getElementsByTagName("div").length} circulos e deixou de Ganhar ${preNumberClicks} Pontos.`);
             NumberClicks -= preNumberClicks;
             scoreText.innerText = `Pontos: ${NumberClicks}`;
-            clearCircles();
-            createCircle();
-        } else if (ganhar == preNumberClicks) {
-
-            clearInterval(intervalInsano);
-            alert(`Você Ganhou ${preNumberClicks} Pontos.`);
             clearCircles();
             createCircle();
         } else {
