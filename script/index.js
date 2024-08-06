@@ -43,17 +43,17 @@ const textGamaplayInsano = [{
     "Fácil": {
         "h2": "Modo de GamePlay:<br> Insana",
         "h3": "Dificuldade: Fácil",
-        "p": "No modo Fácil de GamePlay insana, os circulos aparecerem na tela a cada 01 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+        "p": "No modo Fácil de GamePlay insana, os circulos aparecerem na tela a cada 0.8 segundos. Clique nos circulos e ganhe pontos, se você acumular 3 circulos você perde, a partida acaba quando você chegar aos 100 Pontos.",
     },
     "Médio": {
         "h2": "Modo de GamePlay:<br> Insana",
         "h3": "Dificuldade: Medio",
-        "p": "No modo Medio de GamePlay insana, os circulos aparecerem na tela a cada 0.8 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+        "p": "No modo Medio de GamePlay insana, os circulos aparecerem na tela a cada 0.6 segundos. Clique nos circulos e ganhe pontos, se você acumular 5 circulos você perde, a partida acaba quando você chegar aos 250 Pontos",
     },
     "Difícil": {
         "h2": "Modo de GamePlay:<br> Insana",
         "h3": "Dificuldade: Difícil",
-        "p": "No modo Difícil de GamePlay insana, os circulos aparecerem na tela a cada 0.5 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
+        "p": "No modo Difícil de GamePlay insana, os circulos aparecerem na tela a cada 0.4 segundos. Clique nos circulos e ganhe pontos, se você acumular 10 circulos você perde, a partida acaba quando você chegar aos 500 Pontos",
     }
 }];
 const arrayMusic = [
@@ -78,24 +78,49 @@ const arrayMusic = [
         "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
     },
 ];
+const arraySoundEffetc = [
+    {
+        "nome": "Button Press sound",
+        "src": "midias/Music/Sound Effect/Button Press sound - Sound Effects(M4A_128K).m4a",
+    },
+    {
+        "nome": "Click Sound Effect",
+        "src": "midias/Music/Sound Effect/Click Sound Effect(M4A_128K).m4a",
+    },
+    {
+        "nome": "Menu Game Button Click Sound Effect",
+        "src": "midias/Music/Sound Effect/Menu Game Button Click Sound Effect(M4A_128K).m4a",
+    },
+];
 
+// SoundEffect
+function playSoundEffect(sound, vol, start) {
+    soundEffect.src = arraySoundEffetc[sound].src;
+    soundEffect.volume = vol;
+    soundEffect.currentTime = start;
+    soundEffect.play();
+}
 // interatividade com o menu
 function menuBurgue() {
     let menu = window.document.getElementById("menu");
     if (menu.style.display == "none") {
         menu.style.display = "block";
+        playSoundEffect(2,0.5,0.4);
     } else {
         menu.style.display = "none";
+        playSoundEffect(2,0.5,0.4);
     }
 }
 // PEGANDO OBJETOS HTML
 var audio = new Audio();
+var soundEffect = new Audio();
 
 var containerMapa = window.document.getElementById("containerMapa");
 var scoreText = window.document.getElementById("score");
 var caica_de_texto_Gameplay = window.document.getElementById("caica_de_texto_Gameplay");
 
 var NumberClicks = 0;
+var preNumberClicks = 0;
 
 
 // CRIANDO OS CIRCULOS  RANDOMICAMENTE
@@ -121,15 +146,16 @@ function clickCircle(idItem) {
     item.remove();
     score("add");
     createCircle();
+    playSoundEffect(0,0.3,0.3);
 }
 // UPDATE DA PONTUAÇÃO
 function score(addOrRemove) {
     if (addOrRemove = "add") {
         NumberClicks++
-        scoreText.innerText = `Score: ${NumberClicks}`;
+        scoreText.innerText = `Pontos: ${NumberClicks}`;
     } else {
         NumberClicks = 0;
-        scoreText.innerText = `Score: ${NumberClicks}`;
+        scoreText.innerText = `Pontos: ${NumberClicks}`;
     }
 }
 // VERIFICAÇÃO DE CLICK NA TALA INICAL
@@ -322,32 +348,6 @@ function typeGameplayInsano() {
     }
 }
 
-function startGameplayInsano(tempo) {
-    clearCircles();
-    clearInterval(intervalInsano);
-    intervalInsano = setInterval(() => {
-
-        let randomTop = Math.floor(Math.random() * 80 + 10);
-        let randomLeft = Math.floor(Math.random() * 80 + 10);
-        
-        let circle = document.createElement("div");
-        circle.className = "cirlce";
-        circle.id = `circle${randomTop}-${randomLeft}`;
-    
-        circle.style.top = `${randomTop}%`;
-        circle.style.left = `${randomLeft}%`;
-    
-        circle.addEventListener('click', () => { 
-            
-            let item = window.document.getElementById(`circle${randomTop}-${randomLeft}`);
-            item.remove();
-            score("add");
-        });
-    
-        containerMapa.appendChild(circle);
-    }, tempo);
-}
-
 // FUNÇÃO PARA APARECER E DESAPARECER A CAIXA DE TEXTO
 
 function boxTextGamaplay(params) {
@@ -374,15 +374,15 @@ function boxTextGamaplay(params) {
     enter.addEventListener("click", () => {
 
         if (params == "Fácil") {
-            typeGameplayInsano(); startGameplayInsano(1000);
+            typeGameplayInsano(); startGameplayInsano(800,3,100);
             caica_de_texto_Gameplay.style.display = "none";
             
         } else if (params == "Médio") {
-            typeGameplayInsano(); startGameplayInsano(800);
+            typeGameplayInsano(); startGameplayInsano(600,5,250);
             caica_de_texto_Gameplay.style.display = "none";
 
         } else if (params == "Difícil") {
-            typeGameplayInsano(); startGameplayInsano(500);
+            typeGameplayInsano(); startGameplayInsano(400,10,500);
             caica_de_texto_Gameplay.style.display = "none";
 
         }
@@ -397,6 +397,55 @@ function boxTextGamaplay(params) {
     caica_de_texto_Gameplay.appendChild(back);
     caica_de_texto_Gameplay.appendChild(enter);
 }
+
+function startGameplayInsano(tempo, acumulo, ganhar) {
+    preNumberClicks = 0;
+    clearCircles();
+    clearInterval(intervalInsano);
+
+    intervalInsano = setInterval(() => {
+        
+        if (acumulo == containerMapa.getElementsByTagName("div").length) {
+
+            clearInterval(intervalInsano);
+            alert(`Você Perdeu. Acumulou ${containerMapa.getElementsByTagName("div").length} circulos e deixou de Ganhar ${preNumberClicks} Pontos.`);
+            NumberClicks -= preNumberClicks;
+            scoreText.innerText = `Pontos: ${NumberClicks}`;
+            clearCircles();
+            createCircle();
+        } else if (ganhar == preNumberClicks) {
+
+            clearInterval(intervalInsano);
+            alert(`Você Ganhou ${preNumberClicks} Pontos.`);
+            clearCircles();
+            createCircle();
+        } else {
+
+            let randomTop = Math.floor(Math.random() * 80 + 10);
+            let randomLeft = Math.floor(Math.random() * 80 + 10);
+            
+            let circle = document.createElement("div");
+            circle.className = "cirlce";
+            circle.id = `circle${randomTop}-${randomLeft}`;
+        
+            circle.style.top = `${randomTop}%`;
+            circle.style.left = `${randomLeft}%`;
+        
+            circle.addEventListener('click', () => { 
+                
+                let item = window.document.getElementById(`circle${randomTop}-${randomLeft}`);
+                item.remove();
+                score("add");
+                preNumberClicks++;
+                playSoundEffect(0,0.3,0.3);
+            });
+        
+            containerMapa.appendChild(circle);
+        }
+
+    }, tempo);
+}
+
 // GERANDO MENU DE MUSICAS
 
 function createMusic() {
