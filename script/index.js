@@ -144,7 +144,7 @@ document.getElementById("start").addEventListener('click', () => {
 
 // ADICIONANDO MENU 
 function addMenu() {
-    let menu = document.createElement("div");
+    let menu = document.createElement("section");
     let ul = document.createElement("ul");
     let optionBackground = document.createElement("li");
     optionBackground.innerText = "Background";
@@ -225,6 +225,13 @@ function createMenuBackground() {
         Background.style.display = "none";
     }
 }
+// CLEAR CIRLCES
+function clearCircles() {
+    for (let x = 0; x != containerMapa.getElementsByTagName("div").length; ) {
+        let circle = containerMapa.getElementsByTagName("div")[x];
+        circle.remove();
+    }
+}
 // ADICIONANDO MENU-GAMEPLAY
 var intervalInsano;
 
@@ -257,9 +264,8 @@ function createMenuGameplay() {
                     containerGameplay.style.display = "none";
                     containerGameplay.innerHTML = '';
                     setTimeout(() => {
-                        let circle = containerMapa.getElementsByTagName("div")[1];
-                        circle.remove();
                         clearInterval(intervalInsano); 
+                        clearCircles();
                         createCircle();
                     }, 10);
                 });
@@ -317,8 +323,7 @@ function typeGameplayInsano() {
 }
 
 function startGameplayInsano(tempo) {
-    let circle = containerMapa.getElementsByTagName("div")[1];
-    circle.remove();
+    clearCircles();
     clearInterval(intervalInsano);
     intervalInsano = setInterval(() => {
 
