@@ -56,6 +56,28 @@ const textGamaplayInsano = [{
         "p": "No modo Difícil de GamePlay insana, os circulos aparecerem na tela a cada 0.5 segundos. Clique nos circulos e ganhe pontos, clicar nos circulos não influência no aparecimento dos outros circulos.",
     }
 }];
+const arrayMusic = [
+    {
+        "nome": "RAINING IN 0SAKA",
+        "src": "midias/Music/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a",
+    },
+    {
+        "nome": "POORSTACY - Don_t Look At Me",
+        "src": "midias/Music/POORSTACY - Don_t Look At Me (prod. Whethan)(M4A_128K).m4a",
+    },
+    {
+        "nome": "Kobenz - Diary of a Simpy Kid",
+        "src": "midias/Music/Kobenz - Diary of a Simpy Kid(M4A_128K).m4a",
+    },
+    {
+        "nome": "Chief Kelly x Spaceman Zack - Sons of Icarus",
+        "src": "midias/Music/Chief Kelly x Spaceman Zack - Sons of Icarus(M4A_128K).m4a",
+    },
+    {
+        "nome": "aldn - icantbelieveiletyougetaway",
+        "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
+    },
+];
 
 // interatividade com o menu
 function menuBurgue() {
@@ -67,7 +89,7 @@ function menuBurgue() {
     }
 }
 // PEGANDO OBJETOS HTML
-var audio = new Audio('midias/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a');
+var audio = new Audio();
 
 var containerMapa = window.document.getElementById("containerMapa");
 var scoreText = window.document.getElementById("score");
@@ -115,6 +137,7 @@ document.getElementById("start").addEventListener('click', () => {
     let item = window.document.getElementById("telaInicial");
     item.style.display = "none";
     createCircle();
+    audio.src = arrayMusic[0].src;
     audio.loop = true;
     audio.play();
 })
@@ -132,6 +155,7 @@ function addMenu() {
     optionTypetheGame.innerText = "Modos de Jogo";
     optionTypetheGame.addEventListener('click', () => { createMenuGameplay();});
     let optionMusic = document.createElement("li");
+    optionMusic.addEventListener('click', () => { createMusic(); });
     optionMusic.innerText = "Músicas"
 
     menu.id = "menu";
@@ -215,7 +239,7 @@ function createMenuGameplay() {
 
         let sair = document.createElement("p");
         sair.innerText = "sair";
-        sair.id = "sairGameplay";
+        sair.className = "sair";
         sair.addEventListener('click', () => { createMenuGameplay(); });
         
         let lista = document.createElement("ul");
@@ -262,7 +286,7 @@ function typeGameplayInsano() {
 
         let sair = document.createElement("p");
         sair.innerText = "sair";
-        sair.id = "sairGameplayInsano";
+        sair.className = "sair";
         sair.addEventListener('click', () => { typeGameplayInsano(); });
         
         const typesGameplayInsano = ["Fácil", "Médio", "Difícil"]
@@ -368,4 +392,37 @@ function boxTextGamaplay(params) {
     caica_de_texto_Gameplay.appendChild(back);
     caica_de_texto_Gameplay.appendChild(enter);
 }
+// GERANDO MENU DE MUSICAS
+
+function createMusic() {
+    let menu = window.document.getElementById("menu");
+    let containerMusic = document.createElement("div");
+    let lista = document.createElement("ul");
+
+    menu.style.display = "none";
+    containerMusic.id = "containerMusic";
+    lista.id = "listaMusic"
+
+    for (let x = 0; x < arrayMusic.length; x++) {
+        let item = document.createElement("li");
+        item.innerText = arrayMusic[x].nome;
+        item.addEventListener('click', () => {
+            audio.src = arrayMusic[x].src;
+            audio.loop = true;
+            audio.play();
+        });
+        lista.appendChild(item);
+    }
+
+    let sair = document.createElement("p");
+    sair.innerText = "sair";
+    sair.className = "sair";
+    sair.addEventListener('click', () => { window.document.getElementById("containerMusic").remove(); });
+
+    
+    containerMusic.appendChild(lista);
+    containerMusic.appendChild(sair);
+    containerMapa.appendChild(containerMusic);
+}
+
 addMenu();
