@@ -17,8 +17,18 @@
         color: whitesmoke;
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
     }
+    #caica_de_texto_Gameplay > h2 {
+        font-size: 4;
+    }
+    #caica_de_texto_Gameplay > h3 {
+        font-size: 3vh;
+    }
+    #caica_de_texto_Gameplay > p {
+        margin: 5% 10% 5% 10%;
+        font-size: 2vh;
+    }
     #caica_de_texto_Gameplay > span {
-        margin: auto 3px auto 3px;
+        margin: 10% 2% auto 2%;
         padding: 5px;
         bottom: 10%;
         font-size: 2.5vh;
