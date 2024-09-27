@@ -58,10 +58,6 @@ const textGamaplayInsano = [{
 }];
 const arrayMusic = [
     {
-        "nome": "NENHUMA",
-        "src": "",
-    },
-    {
         "nome": "RAINING IN 0SAKA",
         "src": "midias/Music/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a",
     },
@@ -80,6 +76,10 @@ const arrayMusic = [
     {
         "nome": "aldn - icantbelieveiletyougetaway",
         "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
+    },
+    {
+        "nome": "NENHUMA",
+        "src": "",
     },
 ];
 const arraySoundEffetc = [
