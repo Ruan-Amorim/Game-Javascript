@@ -69,13 +69,17 @@ const arrayMusic = [
         "nome": "Kobenz - Diary of a Simpy Kid",
         "src": "midias/Music/Kobenz - Diary of a Simpy Kid(M4A_128K).m4a",
     },
-    {
-        "nome": "Chief Kelly x Spaceman Zack - Sons of Icarus",
-        "src": "midias/Music/Chief Kelly x Spaceman Zack - Sons of Icarus(M4A_128K).m4a",
-    },
+    //{
+    //    "nome": "Chief Kelly x Spaceman Zack - Sons of Icarus",
+    //    "src": "midias/Music/Chief Kelly x Spaceman Zack - Sons of Icarus(M4A_128K).m4a",
+    //},
     {
         "nome": "aldn - icantbelieveiletyougetaway",
         "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
+    },
+    {
+        "nome": "NENHUMA",
+        "src": "",
     },
 ];
 const arraySoundEffetc = [
@@ -177,6 +181,7 @@ function addMenu() {
     optionBackground.addEventListener('click', () => { createMenuBackground(); });
     let optionStilishCircle = document.createElement("li");
     optionStilishCircle.innerText = "Estilizar";
+    optionStilishCircle.addEventListener('click', () => { createStyles(); })
     let optionTypetheGame = document.createElement("li");
     optionTypetheGame.innerText = "Modos de Jogo";
     optionTypetheGame.addEventListener('click', () => { createMenuGameplay();});
@@ -477,6 +482,45 @@ function createMusic() {
     containerMusic.appendChild(lista);
     containerMusic.appendChild(sair);
     containerMapa.appendChild(containerMusic);
+}
+
+function createStyles() {
+    
+    let menu = window.document.getElementById("menu");
+    menu.style.display = "none";
+
+    let containerStyles = document.createElement("div");
+    containerStyles.id = "containerStyles";
+    let previewStyles = document.createElement("div");
+    previewStyles.id = "previewStyles";
+    let configStyles = document.createElement("div");
+    configStyles.id = "configStyles";
+
+    let circleStyles = document.createElement("div");
+    circleStyles.id = "circleStyles";
+
+    let shadowStyles = document.createElement("input");
+    shadowStyles.type = "color";
+    shadowStyles.addEventListener('input', () => {
+        window.document.getElementById("circleStyles").style.boxShadow = `0 0 20px ${shadowStyles.value} ,inset 0 0 20px ${shadowStyles.value}`;
+    });
+    let colorStyles = document.createElement("input");
+    colorStyles.type = "color";
+    colorStyles.addEventListener('input', () => {
+        window.document.getElementById("circleStyles").style.border = `0.5vw solid ${colorStyles.value}`;
+    });
+    let formatoStyles;
+    let tamanhoStyles = document.createElement("input");
+    tamanhoStyles.type = "range";
+
+
+    previewStyles.appendChild(circleStyles);
+    configStyles.appendChild(colorStyles);
+    configStyles.appendChild(shadowStyles);
+    configStyles.appendChild(tamanhoStyles);
+    containerStyles.appendChild(previewStyles);
+    containerStyles.appendChild(configStyles);
+    containerMapa.appendChild(containerStyles);
 }
 
 addMenu();

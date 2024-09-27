@@ -102,7 +102,7 @@ html, body {
     border: 0.5vw solid whitesmoke;
     border-radius: 10px;
 }
-#menu > ul > li:hover, #menu_GamePlay > ul > li:hover, #containerInsano > ul > li:hover {
+#menu > ul > li:hover, #menu_GamePlay > ul > li:hover, #containerInsano > ul > li:hover, #containerMusic > ul > li:hover {
     transition: 0.3s;
     color: rgba(144, 28, 173, 0.767);
     border: 0.5vw solid rgba(144, 28, 173, 0.767);
@@ -273,7 +273,7 @@ nav > i:hover {
 }
 #caica_de_texto_Gameplay > h3 {
     font-size: 3.7vh;
-    color: whitesmoke;
+    color: whitesmoke; 
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.671);
 }
 #caica_de_texto_Gameplay > p {
@@ -331,4 +331,55 @@ nav > i:hover {
     animation: animacao01 0.7s ease-in-out;
     transition: 0.7s;
     overflow-y: scroll;
+}
+/* MENU ESTILIZAÇÃO */
+
+#containerStyles {
+    position: absolute;
+    display: flex;
+    width: 85vw;
+    height: 85vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: linear-gradient(60deg, rgb(6, 0, 10), rgb(0, 0, 10));
+    box-shadow: 0 0 10px rgba(190, 56, 235, 0.589);
+    border-radius: 30px;
+    z-index: 3000;
+    animation: animacao01 0.7s ease-in-out;
+    transition: 0.7s;
+    overflow-y: scroll;
+}
+#previewStyles {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#configStyles {
+    display: list-item;
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color: rgb(102, 25, 175); 
+}
+#circleStyles {
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+    border: 0.5vw solid whitesmoke;
+    box-shadow: 0 0 20px rgba(144, 28, 173, 0.767) ,inset 0 0 20px rgba(144, 28, 173, 0.767);
+    border-radius: 50%;
+    animation: animacao01 0.3s ease-in-out;
+}
+
+
+#configStyles > input {
+    display: block;
+    margin: 5%auto;
 }
