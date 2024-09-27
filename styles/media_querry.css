@@ -33,4 +33,20 @@
         bottom: 10%;
         font-size: 2.5vh;
     }
+    #containerStyles {
+        display: list-item;
+    }
+    #previewStyles {
+        display: block;
+        width: 100%;
+        height: 40%;
+    }
+    #configStyles {
+        display: block;
+        width: 100%;
+        height: 60%;
+    }
+    #configStyles > div > input {
+        margin: 5% auto;
+    }
 }
