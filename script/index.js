@@ -58,6 +58,10 @@ const textGamaplayInsano = [{
 }];
 const arrayMusic = [
     {
+        "nome": "NENHUMA",
+        "src": "",
+    },
+    {
         "nome": "RAINING IN 0SAKA",
         "src": "midias/Music/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a",
     },
@@ -76,10 +80,6 @@ const arrayMusic = [
     {
         "nome": "aldn - icantbelieveiletyougetaway",
         "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
-    },
-    {
-        "nome": "NENHUMA",
-        "src": "",
     },
 ];
 const arraySoundEffetc = [
@@ -499,6 +499,7 @@ function createStyles() {
     let circleStyles = document.createElement("div");
     circleStyles.id = "circleStyles";
 
+
     let shadowStyles = document.createElement("input");
     shadowStyles.type = "color";
     shadowStyles.addEventListener('input', () => {
@@ -509,15 +510,46 @@ function createStyles() {
     colorStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.border = `0.5vw solid ${colorStyles.value}`;
     });
-    let formatoStyles;
+    let formatoStyles = document.createElement("input");
+    formatoStyles.type = "range";
+    formatoStyles.min = 0;
+    formatoStyles.max = 100;
+    formatoStyles.addEventListener('input', () => {
+        window.document.getElementById("circleStyles").style.borderRadius = `${formatoStyles.value}%`;
+    });
+
     let tamanhoStyles = document.createElement("input");
     tamanhoStyles.type = "range";
+    tamanhoStyles.min = 0;
+    tamanhoStyles.max = 5;
+    tamanhoStyles.addEventListener('input', () => {
+        window.document.getElementById("circleStyles").style.transform = `translate(-50%,-50%) scale(1.${tamanhoStyles.value})`;
+    });
+
+    let adicionar = document.createElement("h2");
+    adicionar.innerText = "Adicionar";
+    adicionar.id = "menuStylesAdicionar";
+    adicionar.addEventListener('click', () => {
+        let circle = window.document.getElementsByClassName("cirlce");
+        circle.style.border = `0.5vw solid ${colorStyles.value}`;
+        circle.style.boxShadow = `0 0 20px ${shadowStyles.value} ,inset 0 0 20px ${shadowStyles.value}`;
+        circle.style.borderRadius = `${formatoStyles.value}%`;
+        circle.style.transform = `translate(-50%,-50%) scale(1.${tamanhoStyles.value})`;
+    })
+    let sair = document.createElement("h2");
+    sair.innerText = "Sair";
+    sair.addEventListener('click', () => {
+        window.document.getElementById("containerStyles").remove();
+    });
 
 
     previewStyles.appendChild(circleStyles);
     configStyles.appendChild(colorStyles);
     configStyles.appendChild(shadowStyles);
     configStyles.appendChild(tamanhoStyles);
+    configStyles.appendChild(formatoStyles);
+    configStyles.appendChild(adicionar);
+    configStyles.appendChild(sair);
     containerStyles.appendChild(previewStyles);
     containerStyles.appendChild(configStyles);
     containerMapa.appendChild(containerStyles);
