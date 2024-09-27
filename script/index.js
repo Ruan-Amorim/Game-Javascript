@@ -96,6 +96,12 @@ const arraySoundEffetc = [
         "src": "midias/Music/Sound Effect/Menu Game Button Click Sound Effect(M4A_128K).m4a",
     },
 ];
+const CircleStyles = {
+    "cor": 'whitesmoke',
+    "sombra": 'rgba(144, 28, 173, 0.767)',
+    "formato": 60,
+    "tamanho": 0,
+};
 
 // SoundEffect
 function playSoundEffect(sound, vol, start) {
@@ -137,11 +143,16 @@ function createCircle() {
     circle.className = "cirlce";
     circle.id = `circle${randomTop}-${randomLeft}`;
 
+    circle.style.border =  `0.5vw solid ${CircleStyles.cor}`;
+    circle.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
+    circle.style.borderRadius = `${CircleStyles.formato}%`; 
+    circle.style.scale = `1.${CircleStyles.tamanho}`;
+ 
     circle.style.top = `${randomTop}%`;
     circle.style.left = `${randomLeft}%`;
 
     circle.addEventListener('click', () => { clickCircle(`circle${randomTop}-${randomLeft}`); });
-
+    
     containerMapa.appendChild(circle);
 };
 // FUNCÇÃO DE CLICK DIS CIRCULOS
@@ -483,6 +494,7 @@ function createMusic() {
     containerMusic.appendChild(sair);
     containerMapa.appendChild(containerMusic);
 }
+// CRIANDO MENU ESTILIZAÇÃO DE CIRCULO
 
 function createStyles() {
     
@@ -499,16 +511,23 @@ function createStyles() {
     let circleStyles = document.createElement("div");
     circleStyles.id = "circleStyles";
 
+    
+    circleStyles.style.border =  `0.5vw solid ${CircleStyles.cor}`;
+    circleStyles.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
+    circleStyles.style.borderRadius = `${CircleStyles.formato}%`;
+    circleStyles.style.transform = `translate(-50%,-50%) scale(1.${CircleStyles})`;
 
     let shadowStyles = document.createElement("input");
     shadowStyles.type = "color";
     shadowStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.boxShadow = `0 0 20px ${shadowStyles.value} ,inset 0 0 20px ${shadowStyles.value}`;
+        CircleStyles.sombra = shadowStyles.value;
     });
     let colorStyles = document.createElement("input");
     colorStyles.type = "color";
     colorStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.border = `0.5vw solid ${colorStyles.value}`;
+        CircleStyles.cor = colorStyles.value;
     });
     let formatoStyles = document.createElement("input");
     formatoStyles.type = "range";
@@ -516,6 +535,7 @@ function createStyles() {
     formatoStyles.max = 100;
     formatoStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.borderRadius = `${formatoStyles.value}%`;
+        CircleStyles.formato = formatoStyles.value;
     });
 
     let tamanhoStyles = document.createElement("input");
@@ -524,18 +544,10 @@ function createStyles() {
     tamanhoStyles.max = 5;
     tamanhoStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.transform = `translate(-50%,-50%) scale(1.${tamanhoStyles.value})`;
+        CircleStyles.tamanho = tamanhoStyles.value;
     });
 
-    let adicionar = document.createElement("h2");
-    adicionar.innerText = "Adicionar";
-    adicionar.id = "menuStylesAdicionar";
-    adicionar.addEventListener('click', () => {
-        let circle = window.document.getElementsByClassName("cirlce");
-        circle.style.border = `0.5vw solid ${colorStyles.value}`;
-        circle.style.boxShadow = `0 0 20px ${shadowStyles.value} ,inset 0 0 20px ${shadowStyles.value}`;
-        circle.style.borderRadius = `${formatoStyles.value}%`;
-        circle.style.transform = `translate(-50%,-50%) scale(1.${tamanhoStyles.value})`;
-    })
+    
     let sair = document.createElement("h2");
     sair.innerText = "Sair";
     sair.addEventListener('click', () => {
@@ -548,7 +560,6 @@ function createStyles() {
     configStyles.appendChild(shadowStyles);
     configStyles.appendChild(tamanhoStyles);
     configStyles.appendChild(formatoStyles);
-    configStyles.appendChild(adicionar);
     configStyles.appendChild(sair);
     containerStyles.appendChild(previewStyles);
     containerStyles.appendChild(configStyles);
