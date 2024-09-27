@@ -355,6 +355,7 @@ nav > i:hover {
     float: left;
 }
 #configStyles {
+    position: relative;
     display: list-item;
     width: 50%;
     height: 100%;
@@ -372,8 +373,23 @@ nav > i:hover {
     animation: animacao01 0.3s ease-in-out;
 }
 
+#configStyles > div {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
-#configStyles > input {
+#configStyles > div > input {
     display: block;
-    margin: 5%auto;
+    width: 50%;
+    margin: 10% auto;
+}
+#configStyles > div > h2 {
+    display: inline-block;
+    scale: 1.2;
+}
+#configStyles > div > h2:hover {
+    transition: 0.3s;
+    color: whitesmoke;
 }

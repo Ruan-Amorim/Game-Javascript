@@ -503,6 +503,7 @@ function createStyles() {
 
     let containerStyles = document.createElement("div");
     containerStyles.id = "containerStyles";
+    let div = document.createElement("div");
     let previewStyles = document.createElement("div");
     previewStyles.id = "previewStyles";
     let configStyles = document.createElement("div");
@@ -556,11 +557,12 @@ function createStyles() {
 
 
     previewStyles.appendChild(circleStyles);
-    configStyles.appendChild(colorStyles);
-    configStyles.appendChild(shadowStyles);
-    configStyles.appendChild(tamanhoStyles);
-    configStyles.appendChild(formatoStyles);
-    configStyles.appendChild(sair);
+    div.appendChild(colorStyles);
+    div.appendChild(shadowStyles);
+    div.appendChild(tamanhoStyles);
+    div.appendChild(formatoStyles);
+    div.appendChild(sair);
+    configStyles.appendChild(div);
     containerStyles.appendChild(previewStyles);
     containerStyles.appendChild(configStyles);
     containerMapa.appendChild(containerStyles);
