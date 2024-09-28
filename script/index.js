@@ -62,20 +62,16 @@ const arrayMusic = [
         "src": "midias/Music/RAINING IN 0SAKA (Lofi HipHop)(M4A_128K).m4a",
     },
     {
-        "nome": "POORSTACY - Don_t Look At Me",
-        "src": "midias/Music/POORSTACY - Don_t Look At Me (prod. Whethan)(M4A_128K).m4a",
+        "nome": "lofi ambient music",
+        "src": "midias/Music/Lofi cat • lofi ambient music _ chill beats to relax_study to(M4A_128K).m4a",
     },
     {
-        "nome": "Kobenz - Diary of a Simpy Kid",
-        "src": "midias/Music/Kobenz - Diary of a Simpy Kid(M4A_128K).m4a",
+        "nome": "MedievaLo-Fi",
+        "src": "midias/Music/MedievaLo-Fi _ Lofi Beats for the Medieval Knight you always wanted to be (M4A_128K).m4a",
     },
-    //{
-    //    "nome": "Chief Kelly x Spaceman Zack - Sons of Icarus",
-    //    "src": "midias/Music/Chief Kelly x Spaceman Zack - Sons of Icarus(M4A_128K).m4a",
-    //},
     {
-        "nome": "aldn - icantbelieveiletyougetaway",
-        "src": "midias/Music/aldn - icantbelieveiletyougetaway [Lyrics _ AMV](M4A_128K).m4a",
+        "nome": "Kick Back but is it okay if it_s lofi",
+        "src": "midias/Music/Kick Back but is it okay if it_s lofi_(M4A_128K).m4a",
     },
     {
         "nome": "NENHUMA",
@@ -142,7 +138,7 @@ function createCircle() {
     let circle = document.createElement("div");
     circle.className = "cirlce";
     circle.id = `circle${randomTop}-${randomLeft}`;
-
+ 
     circle.style.border =  `0.5vw solid ${CircleStyles.cor}`;
     circle.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
     circle.style.borderRadius = `${CircleStyles.formato}%`; 
@@ -512,6 +508,10 @@ function createStyles() {
     let circleStyles = document.createElement("div");
     circleStyles.id = "circleStyles";
 
+    let shadow = CircleStyles.sombra;
+    let color = CircleStyles.cor;
+    let format = CircleStyles.formato;
+    let size = CircleStyles.tamanho;
     
     circleStyles.style.border =  `0.5vw solid ${CircleStyles.cor}`;
     circleStyles.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
