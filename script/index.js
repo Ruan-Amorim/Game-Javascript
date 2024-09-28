@@ -439,9 +439,15 @@ function startGameplayInsano(tempo, acumulo, ganhar) {
             let circle = document.createElement("div");
             circle.className = "cirlce";
             circle.id = `circle${randomTop}-${randomLeft}`;
+
+            circle.style.border =  `0.5vw solid ${CircleStyles.cor}`;
+            circle.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
+            circle.style.borderRadius = `${CircleStyles.formato}%`; 
+            circle.style.scale = `1.${CircleStyles.tamanho}`;
         
             circle.style.top = `${randomTop}%`;
             circle.style.left = `${randomLeft}%`;
+        
         
             circle.addEventListener('click', () => { 
                 
@@ -507,11 +513,6 @@ function createStyles() {
 
     let circleStyles = document.createElement("div");
     circleStyles.id = "circleStyles";
-
-    let shadow = CircleStyles.sombra;
-    let color = CircleStyles.cor;
-    let format = CircleStyles.formato;
-    let size = CircleStyles.tamanho;
     
     circleStyles.style.border =  `0.5vw solid ${CircleStyles.cor}`;
     circleStyles.style.boxShadow = `0 0 20px ${CircleStyles.sombra} ,inset 0 0 20px ${CircleStyles.sombra}`;
@@ -520,12 +521,14 @@ function createStyles() {
 
     let shadowStyles = document.createElement("input");
     shadowStyles.type = "color";
+    shadowStyles.id = "shadowStyles";
     shadowStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.boxShadow = `0 0 20px ${shadowStyles.value} ,inset 0 0 20px ${shadowStyles.value}`;
         CircleStyles.sombra = shadowStyles.value;
     });
     let colorStyles = document.createElement("input");
     colorStyles.type = "color";
+    colorStyles.id = "colorStyles";
     colorStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.border = `0.5vw solid ${colorStyles.value}`;
         CircleStyles.cor = colorStyles.value;
@@ -534,6 +537,7 @@ function createStyles() {
     formatoStyles.type = "range";
     formatoStyles.min = 0;
     formatoStyles.max = 100;
+    formatoStyles.id = "formatoStyles";
     formatoStyles.addEventListener('input', () => {
         window.document.getElementById("circleStyles").style.borderRadius = `${formatoStyles.value}%`;
         CircleStyles.formato = formatoStyles.value;
@@ -541,6 +545,7 @@ function createStyles() {
 
     let tamanhoStyles = document.createElement("input");
     tamanhoStyles.type = "range";
+    tamanhoStyles.id = "tamanhoStyles";
     tamanhoStyles.min = 0;
     tamanhoStyles.max = 5;
     tamanhoStyles.addEventListener('input', () => {
@@ -554,7 +559,6 @@ function createStyles() {
     sair.addEventListener('click', () => {
         window.document.getElementById("containerStyles").remove();
     });
-
 
     previewStyles.appendChild(circleStyles);
     div.appendChild(colorStyles);
