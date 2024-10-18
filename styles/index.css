@@ -39,6 +39,9 @@ html, body {
     transition: 0.3s;
     overflow: hidden;
 }
+html {
+    background: rgb(6, 0, 10);
+}
 /* telaInicial DO JOGO */
 #telaInicial {
     position: absolute;
